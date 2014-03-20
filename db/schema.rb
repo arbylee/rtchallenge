@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320010837) do
+ActiveRecord::Schema.define(version: 20140320014659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "movies", force: true do |t|
-    t.string   "title"
-    t.string   "trailer_link"
-    t.float    "critics_score"
-    t.float    "audience_score"
-    t.date     "release_date"
+  create_table "challenges", force: true do |t|
+    t.date     "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "challenges_users", force: true do |t|
+    t.integer  "challenge_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "challenges_users", ["challenge_id"], name: "index_challenges_users_on_challenge_id", using: :btree
+  add_index "challenges_users", ["user_id"], name: "index_challenges_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
