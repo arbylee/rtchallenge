@@ -1,5 +1,6 @@
 Rtgame::Application.routes.draw do
   resources :challenges
+  post 'reviews' => 'reviews#create'
 
   devise_for :users
   root 'challenges#index'
