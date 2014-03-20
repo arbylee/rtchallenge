@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320014659) do
+ActiveRecord::Schema.define(version: 20140320015756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20140320014659) do
     t.datetime "updated_at"
   end
 
+  create_table "challenges_movies", force: true do |t|
+    t.integer  "challenge_id"
+    t.integer  "movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "challenges_movies", ["challenge_id"], name: "index_challenges_movies_on_challenge_id", using: :btree
+  add_index "challenges_movies", ["movie_id"], name: "index_challenges_movies_on_movie_id", using: :btree
+
   create_table "challenges_users", force: true do |t|
     t.integer  "challenge_id"
     t.integer  "user_id"
@@ -31,6 +41,12 @@ ActiveRecord::Schema.define(version: 20140320014659) do
 
   add_index "challenges_users", ["challenge_id"], name: "index_challenges_users_on_challenge_id", using: :btree
   add_index "challenges_users", ["user_id"], name: "index_challenges_users_on_user_id", using: :btree
+
+  create_table "movies", force: true do |t|
+    t.integer  "rt_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
