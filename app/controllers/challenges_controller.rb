@@ -5,8 +5,11 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
-    rt_ids = @challenge.movies.map {|movie| movie.rt_id }
-
-    @movies = rt_ids.collect {|rt_id| RottenMovie.find(id: rt_id)}.flatten
+    @reviews = []
+    @challenge.movies.each do |movie|
+      @reviews << Review.find_or_initialize_by(user: current_user,
+                                               challenge: @challenge,
+                                               movie: movie)
+    end
   end
 end
