@@ -5,6 +5,8 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
-    @movies = RottenList.find(type: 'upcoming')
+    rt_ids = @challenge.movies.map {|movie| movie.rt_id }
+
+    @movies = rt_ids.collect {|rt_id| RottenMovie.find(id: rt_id)}.flatten
   end
 end
