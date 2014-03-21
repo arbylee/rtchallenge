@@ -1,6 +1,7 @@
 <%= form_tag '/reviews' do %>
   <% @reviews.each_with_index do |review, idx| %>
     <%= label_tag "reviews[#{idx}][#{review.movie.id}]", review.movie.title %>
+    <%= link_to 'Trailer', review.movie.trailer_link, target: '_blank' %>
     <%= hidden_field_tag "reviews[#{idx}][movie_id]", review.movie.id %>
     <%= text_field_tag "reviews[#{idx}][score]", review.score %>
     <br />
