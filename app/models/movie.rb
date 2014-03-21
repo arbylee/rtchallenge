@@ -17,6 +17,8 @@ class Movie < ActiveRecord::Base
   end
 
   def trailer_link
-    clips.first['links']['alternate']
+    if clips.present?
+      clips.first['links']['alternate']
+    end
   end
 end
