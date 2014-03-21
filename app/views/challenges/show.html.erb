@@ -2,8 +2,9 @@
   <% @reviews.each_with_index do |review, idx| %>
     <%= label_tag "reviews[#{idx}][#{review.movie.id}]", review.movie.title %>
     <%= hidden_field_tag "reviews[#{idx}][movie_id]", review.movie.id %>
-    <%= text_field_tag "reviews[#{idx}][score]" %>
+    <%= text_field_tag "reviews[#{idx}][score]", review.score %>
     <br />
   <% end %>
+  <%= hidden_field_tag "challenge_id", @challenge.id %>
   <%= submit_tag "SUBMIT!" %>
 <% end %>
