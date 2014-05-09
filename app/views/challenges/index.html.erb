@@ -1,5 +1,7 @@
 <% @challenges.each do |challenge| %>
   <%= challenge %>
   <%= challenge.id %>
+  <%= link_to "Submit Reviews", challenge_path(challenge)%>
+  <%= link_to "See Results", results_challenge_path(challenge)%>
   <br>
 <% end %>
