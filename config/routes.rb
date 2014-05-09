@@ -1,5 +1,10 @@
 Rtgame::Application.routes.draw do
-  resources :challenges
+  resources :challenges do
+    member do
+      get 'results'
+    end
+  end
+
   post 'reviews' => 'reviews#create'
 
   devise_for :users

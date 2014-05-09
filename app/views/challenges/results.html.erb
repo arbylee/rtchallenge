@@ -1,0 +1,29 @@
+<table style="border: 1px solid black">
+  <tr>
+    <th></th>
+    <% @movies.each do |movie| %>
+      <th scope='col'><%= movie.title %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <th scope='row'>Critics</th>
+    <% @movies.each do |movie| %>
+      <td><%= movie.critics_score %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <th scope='row'>Audience</th>
+      <% @movies.each do |movie| %>
+        <td><%= movie.audience_score %></td>
+      <% end %>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <th scope='row'><%= user.email %></th>
+        <% @movies.each do |movie| %>
+          <td><%= @reviews[movie.id][user.id] %></td>
+        <% end %>
+    </tr>
+  <% end %>
+</table>

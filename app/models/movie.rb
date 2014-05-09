@@ -21,4 +21,12 @@ class Movie < ActiveRecord::Base
       clips.first['links']['alternate']
     end
   end
+
+  def critics_score
+    rt_movie.ratings.critics_score
+  end
+
+  def audience_score
+    rt_movie.ratings.audience_score
+  end
 end
